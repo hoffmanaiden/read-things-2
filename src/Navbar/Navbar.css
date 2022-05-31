@@ -1,0 +1,44 @@
+.navbar{
+  width: 100%;
+  position: relative;
+  max-width: 100%;
+}
+.navbar img{
+  width: 100%
+}
+.navbarLinks{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  font-size: 1.5em;
+  top: 10px;
+  left: 0px;
+  color: white;
+  /* width: 95%;
+  margin-left: 5%; */
+  width: 100%;
+}
+.navbarLinks a{
+  color: white;
+  text-decoration: none;
+}
+.navbarLeft{
+  max-width: 50%;
+  margin-left: 5%;
+}
+.navbarRight{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  /* margin: auto; */
+}
+.linkOption{
+  margin: auto;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1080px){
+  .navbarRight{
+    width: 30%;
+  }
+}

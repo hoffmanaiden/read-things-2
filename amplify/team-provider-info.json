@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-readthings2-staging-170535-authRole",
+      "UnauthRoleArn": "arn:aws:iam::029151510541:role/amplify-readthings2-staging-170535-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::029151510541:role/amplify-readthings2-staging-170535-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-readthings2-staging-170535-deployment",
+      "UnauthRoleName": "amplify-readthings2-staging-170535-unauthRole",
+      "StackName": "amplify-readthings2-staging-170535",
+      "StackId": "arn:aws:cloudformation:us-east-1:029151510541:stack/amplify-readthings2-staging-170535/67dba4b0-d53a-11ec-8683-12149972aea3",
+      "AmplifyAppId": "d3cz7n4vszv3k4"
+    },
+    "categories": {
+      "auth": {
+        "readthings2": {}
+      }
+    }
+  }
+}
