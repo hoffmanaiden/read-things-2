@@ -6,28 +6,51 @@ import wave2 from '../../images/wave2.svg'
 import wave3 from '../../images/wave3.svg'
 import {useWindowSize} from 'react-use';
 import { Auth, Hub } from 'aws-amplify'
+import { useNavigate } from 'react-router-dom'
 
 export default function LogIn(props) {
 
-  const { SignIn } = props
-  const {state, setState} = useContext(UserContext)
+  // const { SignIn } = props
+  // const {state, setState} = useContext(UserContext)
+  const {state, dispatch} = useContext(UserContext)
   const {width, height} = useWindowSize();
+  let navigate = useNavigate();
 
 
-  function onChange(e) {
-    e.persist()
-    setState(() => ({ ...state, [e.target.name]: e.target.value }))
+  // function onChange(e) {
+  //   e.persist()
+  //   setState(() => ({ ...state, [e.target.name]: e.target.value }))
+  // }
+
+  // async function onSubmit(e) {
+  //   e.preventDefault();
+  //   dispatch({type: 'login' })
+  //   try{
+  //     const user = await Auth.signIn(state.username, state.password);
+  //     dispatch({type: 'success', value: user })
+  //     navigate('/home')
+  //   }catch(err){ dispatch({type: 'error', value: err })}
+  // }
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    dispatch({type: 'login' })
+    try{
+      const user = await Auth.signIn(state.username, state.password);
+      dispatch({type: 'success', value: user })
+      navigate('/home')
+    }catch(err){
+      dispatch({type: 'error', value: err })
+    }
   }
 
   return (
     <div className="Auth">
       <div className="form-container">
         <h1>Welcome Back</h1>
-        <input name="username" onChange={onChange} placeholder="username" />
-        <input name="password" type="password" onChange={onChange} placeholder="password" />
-        <button onClick={() => {
-          SignIn()
-        }}>Log in</button>
+        <input name="username" onChange={e => dispatch({type: 'field', field: 'username', value: e.currentTarget.value }) } placeholder="username" />
+        <input name="password" onChange={e => dispatch({type: 'field', field: 'password', value: e.currentTarget.value })} placeholder="password" type="password" />
+        <button onClick={onSubmit}>Log in</button>
         <div> - or - </div>
         <Link to="/signup"><button>Sign up</button></Link>
       </div>

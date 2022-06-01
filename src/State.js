@@ -1,21 +1,33 @@
-import { Auth, Hub } from 'aws-amplify'
-import { useNavigate } from 'react-router-dom'
-import { DataStore } from '@aws-amplify/datastore';
 
 export function reducer(state, action){
+
   switch(action.type){
     case 'login':
       return {
-        ...state
+        ...state,
+        isLoading: true
+      }
+    case 'success':
+      return {
+        ...state,
+        isLoading: false,
+        user: action.value,
+        signedIn: true
       }
     case 'signup':
       return{...state}
     case 'logout':
       return{...state}
     case 'error':
-      return {...state}
+      return {
+        ...state,
+        error: action.value
+      }
     case 'field':
-      return {...state}
+      return {
+        ...state,
+        [action.field]: action.value
+      }
     default:
       break;
   }
