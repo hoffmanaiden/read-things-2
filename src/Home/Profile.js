@@ -1,8 +1,6 @@
 import { useEffect, useState, useContext } from "react"
 import { UserContext} from '../App'
 
-
-
 export default function Profile(){
 
   const {state, setState} = useContext(UserContext)

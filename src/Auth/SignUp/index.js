@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import wave2 from '../../images/wave2.svg'
 import wave3 from '../../images/wave3.svg'
 import { useWindowSize } from 'react-use';
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import {UserContext} from '../../App'
 import { DataStore } from '@aws-amplify/datastore';
 import { PublicUser } from '../../models';
+import { useNavigate } from 'react-router-dom';
 
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
 export default function SignUp(props) {
   const { width, height } = useWindowSize();
   const [state, setState] = useState(initialState);
+  let navigate = useNavigate();
 
   async function signUserUp() {
     try {
@@ -58,6 +61,7 @@ export default function SignUp(props) {
           if(fetchUser){
             props.setState({ ...props.state, user: fetchUser, signedIn: true})
             setState(initialState)
+            navigate('/home')
           }
         }catch(err){
           console.log('Error fetching user after successful signup.', <br/>, err)

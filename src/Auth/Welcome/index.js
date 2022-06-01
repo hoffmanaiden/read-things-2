@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import wave2 from '../../images/wave2.svg'
 import wave3 from '../../images/wave3.svg'
 import {useWindowSize} from 'react-use';
+import {useContext} from 'react'
+import {UserContext} from '../../App'
 
 export default function Welcome() {
   const {width, height} = useWindowSize();

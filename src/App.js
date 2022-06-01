@@ -16,6 +16,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Profile from './Home/Profile'
 import Cookies from 'js-cookie';
+import {reducer} from './State'
 
 export const UserContext = createContext(null)
 
@@ -29,20 +30,11 @@ const initialState = {
   error: null
 }
 
-function loginReducer(state, action){
-  switch(action.type){
-    case 'login':
-      return{...state};
-    default:
-      break;
-  }
-  return state;
-}
 
 function App() {
 
   // Reducer State, trying to replace state
-  const [reducerState, dispatch] = useReducer(loginReducer, initialState)
+  const [reducerState, dispatch] = useReducer(reducer, initialState)
 
 
   const [state, setState] = useState({
@@ -76,12 +68,12 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={providerValue}>
-        <Navbar state={state} setState={setState} />
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Welcome state={state} setState={setState} />} />
-          <Route path="/login" element={<LogIn state={state} setState={setState} SignIn={SignIn} />} />
+          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<LogIn SignIn={SignIn} />} />
           <Route path="/signup" element={<SignUp state={state} setState={setState} />} />
-          <Route path="/home" element={<Home state={state} setState={setState} />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/u/:username" element={<Profile />} />
           <Route path="*" element={<Welcome />} />
         </Routes>

@@ -7,9 +7,7 @@ import {setAuthListener, useCheckUser, signUp, confirmSignUp, signIn, signOut} f
 
 import { UserContext } from '../App'
 
-export default function Home(props){
-  const [user, setUser] = useState(null)
-  // const {state, setState} = props
+export default function Home(){
   const navigate = useNavigate()
 
   const {state, setState} = useContext(UserContext)

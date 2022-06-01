@@ -1,15 +1,17 @@
+
+import {useContext} from 'react'
 import navWave from '../images/wave-navbar.svg'
 import thickNavWave from '../images/thick-wave-menui.svg'
 import { useWindowSize } from 'react-use';
 import { Link } from 'react-router-dom'
-// import { signOut } from '../Auth/Auth'
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom'
 import { Auth, Hub } from 'aws-amplify'
+import { UserContext} from '../App'
 
-export default function Navbar(props) {
+export default function Navbar() {
 
-  const { state, setState } = props
+  const {state, setState} = useContext(UserContext)
   const { width, height } = useWindowSize();
   const navigate = useNavigate()
 
