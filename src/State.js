@@ -17,7 +17,11 @@ export function reducer(state, action){
     case 'signup':
       return{...state}
     case 'logout':
-      return{...state}
+      return{
+        ...state,
+        user: null,
+        signedIn: false
+      }
     case 'error':
       return {
         ...state,

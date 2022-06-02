@@ -10,22 +10,22 @@ import { UserContext } from '../App'
 export default function Home(){
   const navigate = useNavigate()
 
-  const {state, setState} = useContext(UserContext)
+  const {state, dispatch} = useContext(UserContext)
 
   
 
-  async function getUser(){
-    try{
-      // get user from localStorage
-      const fetchUser = await Auth.currentAuthenticatedUser()
-      // set the 'App' state
-      setState({...state, user: fetchUser, signedIn: true})
-    }catch(err){console.log(err)}
-  }
+  // async function getUser(){
+  //   try{
+  //     // get user from localStorage
+  //     const fetchUser = await Auth.currentAuthenticatedUser()
+  //     // set the 'App' state
+  //     setState({...state, user: fetchUser, signedIn: true})
+  //   }catch(err){console.log(err)}
+  // }
 
-  useEffect(() => {
-    getUser()
-  }, [])
+  // useEffect(() => {
+  //   getUser()
+  // }, [])
 
 
   // console.log(state)
@@ -33,10 +33,6 @@ export default function Home(){
     <div>
       <h1>Home</h1>
       {state.user ? <p>Hello {state.user.username}</p> : <p>Hello</p>}
-      <button onClick={() => {
-        navigate('/')
-        signOut(state, setState)
-      }}>Sign out</button>
     </div>
   )
 } 

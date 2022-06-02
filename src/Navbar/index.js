@@ -32,6 +32,12 @@ export default function Navbar() {
           <Link to='/'><div className='linkOption'>read things</div></Link>
         </div>
         <div className='navbarRight'>
+          {state.user ? <div className="linkOption">
+            <Link to={`/u/${state.user.username}`}>profile</Link>
+          </div> : null}
+          {/* {state.user ? <div className='linkOption' onClick={dispatch({type: 'logout'})}>
+            <Link to='/'>sign out</Link>
+          </div> : null} */}
           {/* {state.user ? <div className='linkOption'><Link to={`/u/${state.user.username}`}>profile</Link></div> : null}
           {state.user ? <div className='linkOption' onClick={() => {
             signOut(state, setState)
