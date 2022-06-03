@@ -12,10 +12,33 @@ export function reducer(state, action){
         ...state,
         isLoading: false,
         user: action.value,
+        signedIn: true,
+        password: '',
+        username: ''
+      }
+    case 'signUp':
+      return {
+        ...state,
+        signUpFormType: 'confirmSignUp'
+      }
+    case 'confirmSignUp':
+      return{
+        ...state,
+        user: action.value,
+        signUpFormType: 'signUp',
+        authCode: '',
+        username: '',
+        password: '',
+        confirmPassword: '',
+        email: '',
+        error: null,
+      }
+    case 'setUser':
+      return {
+        ...state,
+        user: action.value,
         signedIn: true
       }
-    case 'signup':
-      return{...state}
     case 'logout':
       return{
         ...state,

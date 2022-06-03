@@ -28,7 +28,9 @@ const initialState = {
   email: '',
   signedIn: false,
   error: null,
-  isLoading: false
+  isLoading: false,
+  signUpFormType: 'signUp',
+  authCode: ''
 }
 
 

@@ -1,16 +1,23 @@
 
-import {useContext, useState} from 'react'
-import { Auth, Hub } from 'aws-amplify'
-import { UserContext } from '../App';
+import { Auth } from 'aws-amplify'
 
-export async function signOut(state, setState) {
+
+export async function checkUser(state, dispatch){
   try {
-      let response = await Auth.signOut();
-      setState({...state, user: null, signedIn: false})
-      return response
-  } catch (error) {
-      console.log('error signing out: ', error);
+    // get user from localStorage
+    const fetchUser = await Auth.currentAuthenticatedUser()
+    // set the 'App' state
+    dispatch({type: 'setUser', value: fetchUser})
+  } catch (err) {
+    console.log(err)
   }
+}
+
+export async function signOut(state, dispatch){
+  try{
+    let response = await Auth.signOut()
+    dispatch({type: 'logout'})
+  }catch(err){ console.log(err)}
 }
 
 // export async function setAuthListener() {

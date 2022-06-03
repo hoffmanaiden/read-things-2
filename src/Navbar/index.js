@@ -1,5 +1,5 @@
 
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 import navWave from '../images/wave-navbar.svg'
 import thickNavWave from '../images/thick-wave-menui.svg'
 import { useWindowSize } from 'react-use';
@@ -8,6 +8,7 @@ import './Navbar.css'
 import { useNavigate } from 'react-router-dom'
 import { Auth, Hub } from 'aws-amplify'
 import { UserContext} from '../App'
+import {checkUser, signOut} from '../Auth/Auth'
 
 export default function Navbar() {
 
@@ -15,15 +16,10 @@ export default function Navbar() {
   const { width, height } = useWindowSize();
   const navigate = useNavigate()
 
-  // async function signOut(state, setState) {
-  //   try {
-  //       let response = await Auth.signOut();
-  //       setState({...state, user: null, signedIn: false})
-  //       navigate('/')
-  //   } catch (error) {
-  //       console.log('error signing out: ', error);
-  //   }
-  // }
+
+  useEffect(() => {
+    checkUser(state,dispatch)
+  }, [])
 
   return (
     <div className='navbar'>
@@ -35,13 +31,9 @@ export default function Navbar() {
           {state.user ? <div className="linkOption">
             <Link to={`/u/${state.user.username}`}>profile</Link>
           </div> : null}
-          {/* {state.user ? <div className='linkOption' onClick={dispatch({type: 'logout'})}>
+          {state.user ? <div className='linkOption' onClick={() => signOut(state, dispatch)}>
             <Link to='/'>sign out</Link>
-          </div> : null} */}
-          {/* {state.user ? <div className='linkOption'><Link to={`/u/${state.user.username}`}>profile</Link></div> : null}
-          {state.user ? <div className='linkOption' onClick={() => {
-            signOut(state, setState)
-          }}>sign out</div> : null} */}
+          </div> : null}
         </div>
       </div>
 
