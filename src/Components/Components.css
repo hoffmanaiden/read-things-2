@@ -1,0 +1,12 @@
+.PostTemplate{
+  background-color: #e0e0e0;
+}
+.PostTemplate img {
+  max-width: 100%;
+}
+.MakePost{
+  /* background-color: aqua; */
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid grey
+}

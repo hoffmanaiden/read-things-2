@@ -1,12 +1,29 @@
+type Like @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  True: Boolean
+  PublicUser: PublicUser @hasOne
+  Post: Post @hasOne
+}
+
+type Follower @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  publicusers: [PublicUser] @manyToMany(relationName: "PublicUserFollower")
+  username: String
+  userImage: String
+}
+
 type Post @model @auth(rules: [{allow: public}]) {
   id: ID!
   text: String
   publicuserID: ID! @index(name: "byPublicUser")
+  img: String
 }
 
 type PublicUser @model @auth(rules: [{allow: public}]) {
   id: ID!
   username: String
   Posts: [Post] @hasMany(indexName: "byPublicUser", fields: ["id"])
-  userImage: AWSURL
+  userImage: String
+  Followers: [Follower] @manyToMany(relationName: "PublicUserFollower")
 }
+ 

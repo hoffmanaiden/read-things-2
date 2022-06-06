@@ -30,7 +30,8 @@ const initialState = {
   error: null,
   isLoading: false,
   signUpFormType: 'signUp',
-  authCode: ''
+  authCode: '',
+  posts: []
 }
 
 

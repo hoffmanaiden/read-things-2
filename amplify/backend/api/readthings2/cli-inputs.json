@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "readthings2",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-3c2595c6-9d21-4074-aadc-20d9857c03f1/amplify/backend/api/readthings2/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-32af417c-2940-4121-acb1-9cec7b94d26c/amplify/backend/api/readthings2/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

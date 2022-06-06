@@ -8,29 +8,12 @@ import {useWindowSize} from 'react-use';
 import { Auth, Hub } from 'aws-amplify'
 import { useNavigate } from 'react-router-dom'
 
-export default function LogIn(props) {
-
-  // const { SignIn } = props
-  // const {state, setState} = useContext(UserContext)
+export default function LogIn() {
   const {state, dispatch} = useContext(UserContext)
   const {width, height} = useWindowSize();
   let navigate = useNavigate();
 
 
-  // function onChange(e) {
-  //   e.persist()
-  //   setState(() => ({ ...state, [e.target.name]: e.target.value }))
-  // }
-
-  // async function onSubmit(e) {
-  //   e.preventDefault();
-  //   dispatch({type: 'login' })
-  //   try{
-  //     const user = await Auth.signIn(state.username, state.password);
-  //     dispatch({type: 'success', value: user })
-  //     navigate('/home')
-  //   }catch(err){ dispatch({type: 'error', value: err })}
-  // }
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -43,6 +26,8 @@ export default function LogIn(props) {
       dispatch({type: 'error', value: err })
     }
   }
+
+  
 
   return (
     <div className="Auth">

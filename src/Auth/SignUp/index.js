@@ -17,6 +17,8 @@ export default function SignUp() {
   const {state, dispatch} = useContext(UserContext)
   let navigate = useNavigate();
 
+
+
   async function signUserUp() {
     try {
       const { username, email, password } = state
@@ -39,10 +41,11 @@ export default function SignUp() {
       dispatch({type: 'signUp'})
     } catch (err) {
       console.log(err)
-      // setState({...state, error: err})
       dispatch({type: 'error', value: err})
     }
   }
+
+
 
   async function confirmSignUp() {
     const { username, password,  authCode } = state
@@ -68,10 +71,6 @@ export default function SignUp() {
   }
 
 
-  // function onChange(e) {
-  //   e.persist()
-  //   setState(() => ({ ...state, [e.target.name]: e.target.value }))
-  // }
 
   return (
     <div className="Auth">
@@ -101,58 +100,3 @@ export default function SignUp() {
     </div>
   )
 }
-
-
-// async function signUserUp() {
-//   try {
-//     const { username, email, password } = state
-//     // Cognito Signup
-//     await Auth.signUp({
-//       username,
-//       password,
-//       attributes: {
-//         email,
-//       }
-//     })
-//     // Data model PublicUser creation
-//     await DataStore.save(
-//       new PublicUser({
-//         "username": username,
-//         "Posts": [],
-//         "userImage": null
-//       })
-//     )
-//     setState(() => ({ ...state, formType: 'confirmSignUp' }))
-//   } catch (err) {
-//     console.log(err)
-//     setState({...state, error: err})
-//   }
-// }
-
-// async function confirmSignUp() {
-//   const { username, password,  authCode } = state
-//   try {
-//     let confirm = await Auth.confirmSignUp(username, authCode)
-//     if (confirm === "SUCCESS") {
-//       try{
-//         const fetchUser = await Auth.signIn(username, password)
-//         if(fetchUser){
-//           props.setState({ ...props.state, user: fetchUser, signedIn: true})
-//           setState(initialState)
-//           navigate('/home')
-//         }
-//       }catch(err){
-//         console.log('Error fetching user after successful signup.', <br/>, err)
-//       }
-//     }else{console.log('Confirmation may not be a success', <br/>, confirm)}
-//     // updateFormState(() => ({ ...formState, formType: 'signIn' }))
-//   } catch (err) {
-//     console.log('Error while confirming sign up',<br/>, err)
-//   }
-// }
-
-
-// function onChange(e) {
-//   e.persist()
-//   setState(() => ({ ...state, [e.target.name]: e.target.value }))
-// }

@@ -1,7 +1,8 @@
 .navbar{
   width: 100%;
-  position: relative;
+  /* position: relative; */
   max-width: 100%;
+  background-color: #8492ff;
 }
 .navbar img{
   width: 100%
@@ -9,7 +10,7 @@
 .navbarLinks{
   display: flex;
   justify-content: space-between;
-  position: absolute;
+  /* position: absolute; */
   font-size: 1.5em;
   top: 10px;
   left: 0px;

@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3readthings2storage0f905f87",
+  "bucketName": "read-things-2-storage-0f905f87",
+  "policyUUID": "13fa3fb2",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

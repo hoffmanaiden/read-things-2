@@ -28,3 +28,6 @@ input{
   border-radius: 6px;
   box-sizing: border-box;
 }
+.feedContainer{
+  width: 90%;
+}

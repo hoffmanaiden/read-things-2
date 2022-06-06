@@ -55,6 +55,11 @@ export function reducer(state, action){
         ...state,
         [action.field]: action.value
       }
+    case 'setPosts':
+      return {
+        ...state,
+        posts: action.value
+      }
     default:
       break;
   }

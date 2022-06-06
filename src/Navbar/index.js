@@ -39,7 +39,7 @@ export default function Navbar() {
 
 
 
-      <img src={width > 750 ? navWave : thickNavWave} />
+      {/* <img src={width > 750 ? navWave : thickNavWave} /> */}
     </div>
   )
 }
