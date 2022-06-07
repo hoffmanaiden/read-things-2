@@ -1,9 +1,35 @@
 .PostTemplate{
-  background-color: #e0e0e0;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  margin: 10px 0px;
 }
-.PostTemplate img {
+.who-top-line{
+ /* background-color: deepskyblue; */
+ display: flex;
+}
+.postProfileImg{
+  height: 10vw;
+  width: 10vw;
+  border-radius: 5vw;
+}
+.postUsername{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+.postText{
+  margin-left: 20px;
+}
+.postVisual{
+  display: block;
   max-width: 100%;
+  margin: 0 auto;
 }
+.like-bottom-line{
+  text-align: right;
+}
+
 .MakePost{
   /* background-color: aqua; */
   width: 60%;

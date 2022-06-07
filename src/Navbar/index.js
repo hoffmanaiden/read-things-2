@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import { Auth, Hub } from 'aws-amplify'
 import { UserContext} from '../App'
 import {checkUser, signOut} from '../Auth/Auth'
+import {FaBook} from 'react-icons/fa'
+import {BsBook, BsBookHalf} from 'react-icons/bs'
 
 export default function Navbar() {
 
@@ -25,7 +27,7 @@ export default function Navbar() {
     <div className='navbar'>
       <div className='navbarLinks'>
         <div className='navbarLeft'>
-          <Link to='/'><div className='linkOption'>read things</div></Link>
+          <Link to='/'><div className='linkOption'><BsBook/> read things</div></Link>
         </div>
         <div className='navbarRight'>
           {state.user ? <div className="linkOption">

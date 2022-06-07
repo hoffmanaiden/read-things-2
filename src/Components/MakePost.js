@@ -1,5 +1,5 @@
 import './Components.css'
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext, useRef } from "react"
 import { Storage } from '@aws-amplify/storage'
 import { UserContext } from '../App'
 import { checkUser } from '../Auth/Auth'
@@ -15,10 +15,17 @@ export default function MakePost(props) {
     postText: ''
   })
   const [selectedFile, setSelectedFile] = useState()
+  const uploadFile = useRef()
 
+  // gets the currently signed in public user
   async function getPublicUserID() {
     const publicUser = await DataStore.query(PublicUser, u => u.username("eq", currentUser));
     return publicUser[0].id
+  }
+
+  async function getPosts() {
+    const models = await DataStore.query(Post);
+    dispatch({type: 'setPosts', value: models})
   }
 
   async function submitPost() {
@@ -38,13 +45,13 @@ export default function MakePost(props) {
         "img": imageRef.key
       })
     )
-    console.log(finalSubmission)
-
+    getPosts()
     setLocalState({
       postText: ''
     })
     setSelectedFile(null)
-    input.type.file.value = null
+    // using a ref to reset 'Choose File' after post creation
+    uploadFile.current.value = null
   }
 
   useEffect(() => {
@@ -59,8 +66,6 @@ export default function MakePost(props) {
   }
   function handleFile(e){
     setSelectedFile(e.target.files[0])
-    // e.target.value = null
-    // Reset 'Choose File' after post creation
   }
 
 
@@ -77,6 +82,7 @@ export default function MakePost(props) {
         type="file"
         className="file"
         onChange={handleFile}
+        ref={uploadFile}
       />
       <button onClick={submitPost}>Post</button>
     </div>

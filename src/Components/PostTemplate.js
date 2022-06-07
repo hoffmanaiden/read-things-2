@@ -1,29 +1,71 @@
 import './Components.css'
 import { Storage } from "@aws-amplify/storage"
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { UserContext } from '../App'
+import { DataStore } from '@aws-amplify/datastore'
+import { PublicUser } from '../models'
+import default_profile_pic from '../images/default_profile.webp'
+import {AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 
 export default function PostTemplate(props) {
-  const [state, setState] = useState()
+  const [image, setImage] = useState()
+  const [user, setUser] = useState({
+    username: '',
+    userImage: null
+  })
   let { post } = props
-  // console.log(post)
+  const { state, dispatch } = useContext(UserContext)
 
   useEffect(() => {
     getImage(post.img)
+    getUser(post.publicuserID)
   }, [])
 
   async function getImage(img) {
-    let image = await Storage.get(img, {
+    let awaitImage = await Storage.get(img, {
       level: 'public'
     })
-    setState(image)
+    setImage(awaitImage)
   }
 
+  async function getUser(fetchId) {
+    const awaitUser = await DataStore.query(PublicUser, u => u.id("eq", fetchId))
+    // const awaitUser = await DataStore.query(PublicUser)
+    // console.log(awaitUser)
+    setUser({
+      ...user,
+      username: awaitUser[0].username,
+      userImage: awaitUser[0].userImage
+    })
+  }
+
+
+  console.log(post.img)
+
+  let extension = 'img'
+
+  switch (extension){
+    case "mp4":
+      extension = 'mp4';
+      break;
+    default:
+      extension = 'img';
+      break; 
+  }
 
   if (post) {
     return (
       <div className="PostTemplate">
-        {post ? <h3>{post.text}</h3> : null}
-        {post ? <img src={state} /> : null}
+        <div className="who-top-line">
+          <img className="postProfileImg" src={user.userImage ? user.userImage : default_profile_pic} />
+          <div className="postUsername">@{user.username}</div>
+        </div>
+
+        {post ? <div className="postText">{post.text}</div> : null}
+        {/* {post && image ? <img className="postVisual" src={image} /> : null} */}
+        <div className="like-bottom-line">
+          <AiOutlineHeart/>
+        </div>
       </div>
     )
   } else {

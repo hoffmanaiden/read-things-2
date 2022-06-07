@@ -29,5 +29,11 @@ input{
   box-sizing: border-box;
 }
 .feedContainer{
-  width: 90%;
+  width: 96%;
 }
+@media only screen and (min-width : 1200px) {
+  .feedContainer{
+    width: 60%;
+  }
+}
+

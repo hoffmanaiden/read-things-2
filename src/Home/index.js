@@ -16,7 +16,6 @@ export default function Home() {
 
   async function getPosts() {
     const models = await DataStore.query(Post);
-    console.log(models);
     dispatch({type: 'setPosts', value: models})
   }
 
@@ -34,7 +33,7 @@ export default function Home() {
     <div className="feedContainer">
       {/* <h1>Home</h1>
       {state.user ? <p>Hello {state.user.username}</p> : <p>Hello</p>} */}
-      {state.user ? <MakePost currentUser={state.user.username}/> : <div>Loading...</div>}
+      {state.user ? <MakePost currentUser={state.user.username}/> : null}
       {state.posts ? state.posts.map((post) => (
         <PostTemplate post={post} key={post.id}/>
       )) : null}
