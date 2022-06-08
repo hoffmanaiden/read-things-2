@@ -6,7 +6,7 @@
 💢 add a profile picture<br>
 💚 Reset 'Choose File' after post creation<br>
 💢 add follow button<br>
-💢 remove duplicate getPosts() function (1 in Home, 1 in Make Post<br>
+💢 remove duplicate getPosts() function (1 in Home, 1 in Make Post)<br>
 
 # Done
 💚 keep user in state on refresh on home<br>

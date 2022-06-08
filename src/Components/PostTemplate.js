@@ -40,11 +40,10 @@ export default function PostTemplate(props) {
   }
 
 
-  console.log(post.img)
+  let fileExtension = post.img.substr(post.img.lastIndexOf('.') + 1)
 
   let extension = 'img'
-
-  switch (extension){
+  switch (fileExtension){
     case "mp4":
       extension = 'mp4';
       break;
@@ -62,7 +61,11 @@ export default function PostTemplate(props) {
         </div>
 
         {post ? <div className="postText">{post.text}</div> : null}
-        {/* {post && image ? <img className="postVisual" src={image} /> : null} */}
+        {post && image && extension === 'mp4'? 
+          <video controls className="postVisual">
+            <source src={image} type="video/mp4" />
+          </video> : post && image ?
+          <img className="postVisual" src={image} /> : null}
         <div className="like-bottom-line">
           <AiOutlineHeart/>
         </div>
