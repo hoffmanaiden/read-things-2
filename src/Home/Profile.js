@@ -14,7 +14,7 @@ export default function Profile(){
   return(
     <div className="feedContainer">
       <h1>Your profile page!</h1>
-      {/* {state.user ? <p>{state.user.username}</p> : null } */}
+      {state.user ? <p>{state.user.username}</p> : null }
     </div>
   )
 }
