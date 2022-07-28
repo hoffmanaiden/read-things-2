@@ -19,7 +19,6 @@ export default function Home() {
     try {
       const models = await DataStore.query(Post);
       dispatch({ type: 'setPosts', value: models })
-      console.log(models)
     } catch (err) {
       console.log(err)
     }
