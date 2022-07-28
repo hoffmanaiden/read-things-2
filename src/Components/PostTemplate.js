@@ -62,7 +62,7 @@ export default function PostTemplate(props) {
 
         {post ? <div className="postText">{post.text}</div> : null}
         {post && image && extension === 'mp4'? 
-          <video controls className="postVisual">
+          <video autoplay muted loop controls className="postVisual">
             <source src={image} type="video/mp4" />
           </video> : post && image ?
           <img className="postVisual" src={image} /> : null}
