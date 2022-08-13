@@ -2,7 +2,13 @@
   width: 100%;
   /* position: relative; */
   max-width: 100%;
-  background-color: #8492ff;
+  background-color: black;
+  min-height: 10vh;
+  position: fixed;
+  z-index: 99999999;
+}
+.navbar-spacer{
+  height: 10vh;
 }
 .navbar img{
   width: 100%

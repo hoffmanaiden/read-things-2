@@ -39,7 +39,7 @@ export default function LogIn() {
         <div> - or - </div>
         <Link to="/signup"><button>Sign up</button></Link>
       </div>
-      <img className="waves" src={width > 750 ? wave2 : wave3} />
+      {/* <img className="waves" src={width > 750 ? wave2 : wave3} /> */}
     </div>
   )
 }

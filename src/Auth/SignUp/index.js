@@ -96,7 +96,7 @@ export default function SignUp() {
           </>
         )}
       </div>
-      <img className="waves" src={width > 750 ? wave2 : wave3} />
+      {/* <img className="waves" src={width > 750 ? wave2 : wave3} /> */}
     </div>
   )
 }

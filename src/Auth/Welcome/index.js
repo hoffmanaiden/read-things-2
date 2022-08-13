@@ -16,7 +16,7 @@ export default function Welcome() {
         <Link to="signup"><button>Sign up</button></Link>
         <Link to="home"><button>See Posts</button></Link>
       </div>
-      <img className="waves" src={width > 750 ? wave2 : wave3} />
+      {/* <img className="waves" src={width > 750 ? wave2 : wave3} /> */}
     </div>
   )
 }
