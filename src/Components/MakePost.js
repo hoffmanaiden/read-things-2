@@ -9,7 +9,7 @@ import { input } from 'aws-amplify'
 
 export default function MakePost(props) {
 
-  const { currentUser } = props
+  // const { currentUser } = props
   const { state, dispatch } = useContext(UserContext)
   const [localState, setLocalState] = useState({
     postText: ''
@@ -17,9 +17,11 @@ export default function MakePost(props) {
   const [selectedFile, setSelectedFile] = useState()
   const uploadFile = useRef()
 
+  const currentUser = state.user
+
   // gets the currently signed in public user
   async function getPublicUserID() {
-    const publicUser = await DataStore.query(PublicUser, u => u.username("eq", currentUser));
+    const publicUser = await DataStore.query(PublicUser, u => u.username("eq", currentUser.username));
     return publicUser[0].id
   }
 
